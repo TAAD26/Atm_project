@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net8.0\Atm Project.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net8.0\Atm Project.GlobalUsings.g.cs" />
+    <Compile Include="obj\Debug\net8.0\Atm.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net8.0\Atm.GlobalUsings.g.cs" />
+    <Compile Include="obj\Release\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\net8.0\Atm Project.AssemblyInfo.cs" />
+    <Compile Include="obj\Release\net8.0\Atm Project.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="obj\Atm.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="obj\Atm.csproj.nuget.g.props" />
+    <None Include="obj\Atm.csproj.nuget.g.targets" />
+    <None Include="obj\Debug\net8.0\Atm Project.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net8.0\Atm Project.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net8.0\Atm.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net8.0\Atm.assets.cache" />
+    <None Include="obj\Debug\net8.0\Atm.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net8.0\Atm.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\project.nuget.cache" />
+    <None Include="obj\Release\net8.0\Atm Project.AssemblyInfoInputs.cache" />
+    <None Include="obj\Release\net8.0\Atm Project.GeneratedMSBuildEditorConfig.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="obj\Debug\net8.0\refint\" />
+    <Folder Include="obj\Debug\net8.0\ref\" />
+    <Folder Include="obj\Debug\net8.0\staticwebassets\" />
+    <Folder Include="obj\Release\net8.0\refint\" />
+    <Folder Include="obj\Release\net8.0\ref\" />
+  </ItemGroup>
+
+</Project>
