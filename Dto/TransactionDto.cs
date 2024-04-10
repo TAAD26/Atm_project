@@ -1,4 +1,5 @@
-﻿using Atm_Project.Model;
+﻿using Atm.Model;
+using System;
 
 namespace Atm.Dto
 {

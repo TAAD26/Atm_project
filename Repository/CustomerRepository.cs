@@ -1,4 +1,4 @@
-﻿namespace Atm_Project.Repository
+﻿namespace Atm.Repository
 {
     public class CustomerRepository
     {

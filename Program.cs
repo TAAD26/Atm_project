@@ -1,4 +1,7 @@
 
+using Atm.Database;
+using Microsoft.EntityFrameworkCore;
+
 namespace Atm
 {
     public class Program
@@ -13,6 +16,10 @@ namespace Atm
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDbContext<AtmContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             var app = builder.Build();
 

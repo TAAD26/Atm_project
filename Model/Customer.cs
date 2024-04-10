@@ -1,9 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Atm_Project.Model
+namespace Atm.Model
 {
     public class Customer
     {
+        [Key]
+        public Guid CustomerKey { get; set; }
+
         [StringLength(11)]
         public string PersonalId { get; set; }
         [StringLength(30)]
@@ -18,7 +21,7 @@ namespace Atm_Project.Model
         public string UserId { get; set; }
         [StringLength(24)]
         public string Password { get; set; }
-        [Key]
-        public Guid AccountKey { get; set; }
+
+        public virtual List<Account> Accounts { get; set; } = new List<Account>();
     }
 }
