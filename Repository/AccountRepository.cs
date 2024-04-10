@@ -1,6 +1,9 @@
-﻿namespace Atm.Repository
+﻿using Atm.Interfaces;
+
+namespace Atm.Repository
 {
-    public class AccountRepository
+    public class AccountRepository : IAccountRepository
     {
+
     }
 }

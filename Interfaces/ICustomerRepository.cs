@@ -1,6 +1,6 @@
 ﻿namespace Atm.Interfaces
 {
-    public interface IUserRepository
+    public interface ICustomerRepository
     {
     }
 }

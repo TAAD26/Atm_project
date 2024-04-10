@@ -1,6 +1,8 @@
-﻿namespace Atm.Repository
+﻿using Atm.Interfaces;
+
+namespace Atm.Repository
 {
-    public class CustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
     }
 }
