@@ -8,5 +8,11 @@ namespace Atm_Project.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public string AccountNo { get; set; }
+        public Account Account { get; set; }
+        public float Amount { get; set; }
+        [StringLength(10)]
+        public string Type { get; set; }
+        public DateTime Date { get; set; }
     }
 }
