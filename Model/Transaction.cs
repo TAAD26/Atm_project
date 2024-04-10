@@ -1,13 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Atm_Project.Model
+namespace Atm.Model
 {
     public class Transaction
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [ForeignKey("Account")]
         public string AccountNo { get; set; }
         public Account Account { get; set; }
         public float Amount { get; set; }

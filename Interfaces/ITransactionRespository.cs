@@ -1,4 +1,4 @@
-﻿namespace Atm_Project.Interfaces
+﻿namespace Atm.Interfaces
 {
     public interface ITransactionRespository
     {

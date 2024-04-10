@@ -1,13 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Atm_Project.Model
+namespace Atm.Model
 {
     public class Account
     {
         [Key]
         [StringLength(34)]
-        public string AccountNo { get; set; }
-        public Guid AccountKey { get; set; }
+        public string Number { get; set; }
+        [ForeignKey("Customer")]
+        public Guid CustomerKey { get; set; }
         public Customer Customer { get; set; }
         public float Balance { get; set; }
 

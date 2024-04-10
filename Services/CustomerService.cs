@@ -1,4 +1,4 @@
-﻿namespace Atm_Project.Services
+﻿namespace Atm.Services
 {
     public class CustomerService
     {
