@@ -6,5 +6,6 @@ namespace Atm.Interfaces
     {
         public List<Account> CreateAccountWithoutSave(Guid customerKey, float startingBalance = 0);
         string Transfer(string CustomerKey, string ToAccountNo, float amount);
+        public Account GetAccountDetails(string customerKey, string accountNumber);
     }
 }
