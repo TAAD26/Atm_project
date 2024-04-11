@@ -26,12 +26,11 @@ namespace Atm.Repository
             _context.SaveChanges();
             return "Transaction successful";
         }
-    public class AccountRepository(AtmContext context) : IAccountRepository
-    {
+
         public void CreateAccount(List<Account> accounts)
         {
-            context.Accounts.AddRange(accounts);
-            context.SaveChanges();
+            _context.Accounts.AddRange(accounts);
+            _context.SaveChanges();
         }
     }
 }

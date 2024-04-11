@@ -14,7 +14,7 @@ namespace Atm.Controllers
             _accountService = accountService;
         }
 
-        [HttpGet("Transfer/{CustomerKey}")]
+        [HttpGet("TransferMoney/{CustomerKey}")]
         public ActionResult<string> Transfer([FromRoute] string CustomerKey, [FromQuery] string toAccountNo, [FromQuery] float amount)
         {
             try
