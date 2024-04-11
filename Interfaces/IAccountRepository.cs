@@ -2,5 +2,7 @@
 {
     public interface IAccountRepository
     {
+        bool CustomerAccountExists(Guid customerKey, string accountNo);
+        void ChangeBalance(string accountNo, float change);
     }
 }
