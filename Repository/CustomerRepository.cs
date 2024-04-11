@@ -24,8 +24,8 @@ namespace Atm.Repository
 
         public void CreateCustomer(Customer customer)
         {
-            atmContext.Customers.Add(customer);
-            atmContext.SaveChanges();
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
         }
     }
 }

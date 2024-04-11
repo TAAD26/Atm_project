@@ -15,13 +15,13 @@ namespace Atm.Controllers
             _transactionService = transactionService;
         }
 
-        [HttpPost]
+        [HttpPost("CreateTransaction")]
         public void CreateTransaction([FromBody] TransactionDto transaction)
         {
             _transactionService.CreateTransaction(transaction);
         }
 
-        [HttpGet("{CustomerKey}")]
+        [HttpGet("GetTransactionsDetails/{CustomerKey}")]
         public ActionResult<string> GetTransactionDetails([FromRoute] string CustomerKey, [FromQuery] string accountNo, [FromQuery] int limit)
         {
             try

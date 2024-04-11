@@ -3,7 +3,7 @@ using Atm.Model;
 
 namespace Atm.Services
 {
-    public class AccountService(IAccountRepository accountRepository) : IAccountService
+    public class AccountService(IAccountRepository _accountRepository) : IAccountService
     {
         public List<Account> CreateAccountWithoutSave(Guid customerKey, float startingBalance = 0)
         {
@@ -25,7 +25,7 @@ namespace Atm.Services
             string accountNumber = "LT";
             Random rand = new();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 18; i++)
             {
                 accountNumber += rand.Next(0, 10);
             }

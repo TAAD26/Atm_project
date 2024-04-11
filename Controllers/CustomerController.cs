@@ -10,20 +10,7 @@ namespace Atm.Controllers
     [ApiController]
     public class CustomerController(ICustomerService _customerService) : ControllerBase
     {
-        [HttpPost("CreateCustomer")]
-        public ActionResult<Customer> CreateCustomer([FromBody] CustomerDto customerDto, [FromQuery][Required] string userName, [FromQuery][Required] string pass)
-        {
-            try
-            {
-                Customer customerToCreate = _customerService.CreateCustomer(customerDto, userName, pass);
-                if (customerToCreate is not null)
-                    return Ok(customerToCreate);
-                else return BadRequest(customerDto);
-            }
-            catch { return BadRequest(new()); }
-        }
-
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public ActionResult<string> Login([FromBody] CustomerLoginDto customer)
         {
             try
@@ -39,6 +26,19 @@ namespace Atm.Controllers
             {
                 return StatusCode(StatusCodes.Status400BadRequest, Ex.Message);
             }
+        }
+
+        [HttpPost("CreateCustomer")]
+        public ActionResult<Customer> CreateCustomer([FromBody] CustomerDto customerDto, [FromQuery][Required] string userName, [FromQuery][Required] string pass)
+        {
+            try
+            {
+                Customer customerToCreate = _customerService.CreateCustomer(customerDto, userName, pass);
+                if (customerToCreate is not null)
+                    return Ok(customerToCreate);
+                else return BadRequest(customerDto);
+            }
+            catch { return BadRequest(new()); }
         }
     }
 }

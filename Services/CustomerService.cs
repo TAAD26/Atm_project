@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Atm.Services
 {
-    public class CustomerService(ICustomerRepository customerRepository, IAccountService accountService) : ICustomerService
+    public class CustomerService(ICustomerRepository _customerRepository, IAccountService accountService) : ICustomerService
     {
         public Customer CreateCustomer(CustomerDto customerDto, string userName, string pass)
         {
@@ -24,7 +24,7 @@ namespace Atm.Services
                     Accounts = customerDto.Accounts.IsNullOrEmpty() ? accountService.CreateAccountWithoutSave(customerDto.CustomerKey) : customerDto.Accounts
                 };
 
-                customerRepository.CreateCustomer(customer);
+                _customerRepository.CreateCustomer(customer);
 
             return customer;
         }
