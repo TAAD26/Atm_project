@@ -1,5 +1,5 @@
-﻿using Atm.Database;
-using Atm.Model;
+﻿using Atm.Dto;
+using Atm.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Atm.Controllers
@@ -8,17 +8,35 @@ namespace Atm.Controllers
     [ApiController]
     public class TransactionsController : ControllerBase
     {
-        //private readonly AtmContext _context;
+        private readonly ITransactionService _transactionService;
 
-        //public TransactionsController(AtmContext context)
-        //{
-        //    _context = context;
-        //}
+        public TransactionsController(ITransactionService transactionService)
+        {
+            _transactionService = transactionService;
+        }
 
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactions()
-        //{
-        //    return;
-        //}
+        [HttpPost]
+        public void CreateTransaction([FromBody] TransactionDto transaction)
+        {
+            _transactionService.CreateTransaction(transaction);
+        }
+
+        [HttpGet("{CustomerKey}")]
+        public ActionResult<string> GetTransactionDetails([FromRoute] string CustomerKey, [FromQuery] string accountNo, [FromQuery] int limit)
+        {
+            try
+            {
+                var result = _transactionService.GetTransactionDetails(accountNo, CustomerKey, limit);
+                return Ok(result);
+            }
+            catch (ArgumentNullException Ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, Ex.Message);
+            }
+            catch (Exception Ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, Ex.Message);
+            }
+        }
     }
 }

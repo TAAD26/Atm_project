@@ -22,5 +22,22 @@ namespace Atm.Controllers
             }
             catch { return BadRequest(new()); }
         }
-    }
+
+        [HttpPost("login")]
+        public ActionResult<string> Login([FromBody] CustomerLoginDto customer)
+        {
+            try
+            {
+                var result = _customerService.Login(customer);
+                return Ok(result);
+            }
+            catch (ArgumentNullException Ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, Ex.Message);
+            }
+            catch (Exception Ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, Ex.Message);
+            }
+        }
 }

@@ -31,5 +31,10 @@ namespace Atm.Services
             }
             return accountNumber;
         }
+
+        public string Transfer(string CustomerKey, string ToAccountNo, float amount)
+        {
+            return _accountRepository.Transfer(CustomerKey, ToAccountNo, amount);
+        }
     }
 }

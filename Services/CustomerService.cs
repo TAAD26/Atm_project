@@ -28,5 +28,11 @@ namespace Atm.Services
 
             return customer;
         }
+
+        public string Login(CustomerLoginDto customer)
+        {
+            return _customerRepository.Login(customer);
+        }
     }
 }
+
