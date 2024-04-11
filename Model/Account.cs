@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Atm.Model
@@ -11,6 +12,7 @@ namespace Atm.Model
         [ForeignKey("Customer")]
         public Guid CustomerKey { get; set; }
         public Customer? Customer { get; set; }
+        [DefaultValue(1000)]
         public float Balance { get; set; }
 
     }

@@ -24,8 +24,16 @@ namespace Atm.Repository
 
         public void CreateCustomer(Customer customer)
         {
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
+            try
+            {
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+            }
+            catch (Exception Ex)
+            {
+
+                Console.WriteLine($"Message: {Ex.Message}, InnerMessage: {Ex.InnerException.Message}");
+            }
         }
     }
 }
