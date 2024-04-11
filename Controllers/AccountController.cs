@@ -1,7 +1,6 @@
 ﻿using Atm.Interfaces;
 using Atm.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ActionConstraints;
 
 namespace Atm.Controllers
 {
@@ -40,6 +39,42 @@ namespace Atm.Controllers
             try
             {
                 var result = _accountService.GetAccountDetails(customerKey, accountNumber);
+                return Ok(result);
+            }
+            catch (ArgumentNullException Ex)
+            {
+                return BadRequest(Ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("Withdraw")]
+        public ActionResult<Account> Withdraw([FromQuery] string CustomerKey, [FromQuery] string accountNumber, [FromQuery] float amount)
+        {
+            try
+            {
+                var result = _accountService.Withdraw(CustomerKey, accountNumber, amount);
+                return Ok(result);
+            }
+            catch (ArgumentNullException Ex)
+            {
+                return BadRequest(Ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("Deposit")]
+        public ActionResult<Account> Deposit([FromQuery] string CustomerKey, [FromQuery] string accountNumber, [FromQuery] float amount)
+        {
+            try
+            {
+                var result = _accountService.Deposit(CustomerKey, accountNumber, amount);
                 return Ok(result);
             }
             catch (ArgumentNullException Ex)

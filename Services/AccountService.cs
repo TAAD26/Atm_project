@@ -10,7 +10,7 @@ namespace Atm.Services
             List<Account> accounts =
             [
                 new Account()
-                { 
+                {
                     Number = GenerateAccountNumer(),
                     CustomerKey = customerKey,
                     Balance = startingBalance,
@@ -40,6 +40,16 @@ namespace Atm.Services
         public Account GetAccountDetails(string customerKey, string accountNumber)
         {
             return _accountRepository.GetAccountDetails(customerKey, accountNumber);
+        }
+
+        public Account Withdraw(string CustomerKey, string accountNumber, float amount)
+        {
+            return _accountRepository.Withdraw(CustomerKey, accountNumber, amount);
+        }
+
+        public Account Deposit(string CustomerKey, string accountNumber, float amount)
+        {
+            return _accountRepository.Deposit(CustomerKey, accountNumber, amount);
         }
     }
 }

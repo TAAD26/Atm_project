@@ -1,5 +1,4 @@
 ﻿using Atm.Database;
-using Atm.Dto;
 using Atm.Interfaces;
 using Atm.Model;
 
@@ -12,7 +11,7 @@ namespace Atm.Repository
         {
             _context = context;
         }
-        public void CreateTransaction(TransactionDto transaction)
+        public void CreateTransaction(Transaction transaction)
         {
             if (transaction == null) throw new ArgumentNullException(nameof(transaction));
             var newTransaction = new Transaction

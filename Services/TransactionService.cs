@@ -1,21 +1,18 @@
-﻿using Atm.Dto;
-using Atm.Interfaces;
+﻿using Atm.Interfaces;
 using Atm.Model;
 
 namespace Atm.Services
 {
     public class TransactionService : ITransactionService
     {
-        private readonly IAccountRepository _accountRepository;
         private readonly ITransactionRespository _transactionRepository;
 
-        public TransactionService(IAccountRepository accountRepository, ITransactionRespository transactionRepository)
+        public TransactionService(ITransactionRespository transactionRepository)
         {
-            _accountRepository = accountRepository;
             _transactionRepository = transactionRepository;
         }
 
-        public void CreateTransaction(TransactionDto transaction)
+        public void CreateTransaction(Transaction transaction)
         {
             _transactionRepository.CreateTransaction(transaction);
         }
