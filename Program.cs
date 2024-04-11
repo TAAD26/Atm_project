@@ -2,6 +2,7 @@
 using Atm.Database;
 using Atm.Interfaces;
 using Atm.Repository;
+using Atm.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Atm
@@ -18,10 +19,16 @@ namespace Atm
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            // Dependecy Injections
             builder.Services.AddScoped<ITransactionRespository, TransactionRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+            builder.Services.AddScoped<ITransactionService, TransactionService>();
+            builder.Services.AddScoped<IAccountService, AccountService>();
+            builder.Services.AddScoped<ICustomerService, CustomerService>();
 
+            // DB Dependecy Injection
             builder.Services.AddDbContext<AtmContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

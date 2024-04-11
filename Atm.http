@@ -1,6 +1,11 @@
-@Atm_HostAddress = http://localhost:5105
+@Atm_HostAddress = https://localhost:7189
 
-GET {{Atm_HostAddress}}/weatherforecast/
-Accept: application/json
+
+POST {{Atm_HostAddress}}/api/customer/CreateCustomer
+Content-Type: application/json
+
+{
+  //CustomerDto
+}
 
 ###

@@ -1,6 +1,8 @@
-﻿namespace Atm.Services
+﻿using Atm.Interfaces;
+
+namespace Atm.Services
 {
-    public class TransactionService
+    public class TransactionService : ITransactionService
     {
     }
 }

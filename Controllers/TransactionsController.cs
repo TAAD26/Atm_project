@@ -8,17 +8,17 @@ namespace Atm.Controllers
     [ApiController]
     public class TransactionsController : ControllerBase
     {
-        private readonly AtmContext _context;
+        //private readonly AtmContext _context;
 
-        public TransactionsController(AtmContext context)
-        {
-            _context = context;
-        }
+        //public TransactionsController(AtmContext context)
+        //{
+        //    _context = context;
+        //}
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactions()
-        {
-            return;
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactions()
+        //{
+        //    return;
+        //}
     }
 }
