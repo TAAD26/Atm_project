@@ -2,6 +2,7 @@
 using Atm.Database;
 using Atm.Interfaces;
 using Atm.Repository;
+using Atm.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Atm
@@ -21,6 +22,9 @@ namespace Atm
             builder.Services.AddScoped<ITransactionRespository, TransactionRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+            builder.Services.AddScoped<IAccountService, AccountService>();
+            builder.Services.AddScoped<ITransactionService, TransactionService>();
+            builder.Services.AddScoped<ICustomerService, CustomerService>();
 
             builder.Services.AddDbContext<AtmContext>(options =>
             {

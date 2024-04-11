@@ -2,7 +2,7 @@
 
 namespace Atm.Interfaces
 {
-    public interface ICustomerRepository
+    public interface ICustomerService
     {
         string Login(CustomerLoginDto customer);
     }
