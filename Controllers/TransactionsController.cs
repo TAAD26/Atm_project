@@ -1,5 +1,5 @@
-﻿using Atm.Dto;
-using Atm.Interfaces;
+﻿using Atm.Interfaces;
+using Atm.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Atm.Controllers
@@ -16,7 +16,7 @@ namespace Atm.Controllers
         }
 
         [HttpPost("CreateTransaction")]
-        public void CreateTransaction([FromBody] TransactionDto transaction)
+        public void CreateTransaction([FromBody] Transaction transaction)
         {
             _transactionService.CreateTransaction(transaction);
         }
