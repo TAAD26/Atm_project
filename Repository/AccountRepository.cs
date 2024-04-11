@@ -32,5 +32,11 @@ namespace Atm.Repository
             _context.Accounts.AddRange(accounts);
             _context.SaveChanges();
         }
+
+        public Account GetAccountDetails(string customerKey, string accountNumber)
+        {
+            var account = _context.Accounts.Where(account => account.CustomerKey == Guid.Parse(customerKey) && account.Number == accountNumber).FirstOrDefault();
+            return account ?? throw new Exception("Failed to get data");
+        }
     }
 }

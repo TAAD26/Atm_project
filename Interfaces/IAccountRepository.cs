@@ -6,5 +6,6 @@ namespace Atm.Interfaces
     {
         string Transfer(string CustomerKey, string ToAccountNo, float amount);
         public void CreateAccount(List<Account> accounts);
+        public Account GetAccountDetails(string customerKey, string accountNumber);
     }
 }

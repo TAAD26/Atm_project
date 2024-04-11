@@ -1,5 +1,7 @@
 ﻿using Atm.Interfaces;
+using Atm.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
 
 namespace Atm.Controllers
 {
@@ -29,6 +31,24 @@ namespace Atm.Controllers
             catch (Exception Ex)
             {
                 return StatusCode(StatusCodes.Status400BadRequest, Ex.Message);
+            }
+        }
+
+        [HttpPost("GetAccountDetails")]
+        public ActionResult<Account> GetAccountDetails([FromQuery] string customerKey, [FromQuery] string accountNumber)
+        {
+            try
+            {
+                var result = _accountService.GetAccountDetails(customerKey, accountNumber);
+                return Ok(result);
+            }
+            catch (ArgumentNullException Ex)
+            {
+                return BadRequest(Ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }
