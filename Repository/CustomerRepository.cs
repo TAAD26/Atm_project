@@ -1,4 +1,5 @@
 ﻿using Atm.Database;
+using Atm.Dto;
 using Atm.Interfaces;
 
 namespace Atm.Repository
@@ -11,13 +12,13 @@ namespace Atm.Repository
             _context = context;
         }
 
-        public string Login(string userId, string password)
+        public string Login(CustomerLoginDto customer)
         {
-            if (String.IsNullOrEmpty(userId)) throw new ArgumentNullException(nameof(userId));
-            if (String.IsNullOrEmpty(password)) throw new ArgumentNullException(nameof(password));
-            var customer = _context.Customers.FirstOrDefault(c => c.UserId == userId && c.Password == password);
-            if (customer == null) throw new Exception("Invalid login");
-            return customer.CustomerKey.ToString();
+            if (String.IsNullOrEmpty(customer.UserId)) throw new ArgumentNullException(nameof(customer.UserId));
+            if (String.IsNullOrEmpty(customer.Password)) throw new ArgumentNullException(nameof(customer.Password));
+            var existingCustomer = _context.Customers.FirstOrDefault(c => c.UserId == customer.UserId && c.Password == customer.Password);
+            if (existingCustomer == null) throw new Exception("Invalid login");
+            return existingCustomer.CustomerKey.ToString();
         }
     }
 }

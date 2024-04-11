@@ -1,4 +1,5 @@
-﻿using Atm.Interfaces;
+﻿using Atm.Dto;
+using Atm.Interfaces;
 
 namespace Atm.Services
 {
@@ -10,9 +11,10 @@ namespace Atm.Services
         {
             _customerRepository = customerRepository;
         }
-        public string Login(string userId, string password)
+        public string Login(CustomerLoginDto customer)
         {
-            return _customerRepository.Login(userId, password);
+            return _customerRepository.Login(customer);
         }
     }
 }
+
