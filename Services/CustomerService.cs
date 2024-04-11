@@ -1,16 +1,34 @@
 ﻿using Atm.Dto;
 using Atm.Interfaces;
+using Atm.Model;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Atm.Services
 {
-    public class CustomerService : ICustomerService
+    public class CustomerService(ICustomerRepository customerRepository, IAccountService accountService) : ICustomerService
     {
-        private readonly ICustomerRepository _customerRepository;
-
-        public CustomerService(ICustomerRepository customerRepository)
+        public Customer CreateCustomer(CustomerDto customerDto, string userName, string pass)
         {
-            _customerRepository = customerRepository;
+            ArgumentNullException.ThrowIfNull(customerDto);
+
+            Customer customer = new()
+                {
+                    CustomerKey = Guid.NewGuid(),
+                    PersonalId = customerDto.PersonalId,
+                    FirstName = customerDto.FirstName,
+                    LastName = customerDto.LastName,
+                    PhoneNumber = customerDto.PhoneNumber,
+                    Address = customerDto.Address,
+                    UserId = userName,
+                    Password = pass,
+                    Accounts = customerDto.Accounts.IsNullOrEmpty() ? accountService.CreateAccountWithoutSave(customerDto.CustomerKey) : customerDto.Accounts
+                };
+
+                customerRepository.CreateCustomer(customer);
+
+            return customer;
         }
+
         public string Login(CustomerLoginDto customer)
         {
             return _customerRepository.Login(customer);

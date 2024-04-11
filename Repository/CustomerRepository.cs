@@ -1,6 +1,7 @@
 ﻿using Atm.Database;
 using Atm.Dto;
 using Atm.Interfaces;
+using Atm.Model;
 
 namespace Atm.Repository
 {
@@ -19,6 +20,12 @@ namespace Atm.Repository
             var existingCustomer = _context.Customers.FirstOrDefault(c => c.UserId == customer.UserId && c.Password == customer.Password);
             if (existingCustomer == null) throw new Exception("Invalid login");
             return existingCustomer.CustomerKey.ToString();
+        }
+
+        public void CreateCustomer(Customer customer)
+        {
+            atmContext.Customers.Add(customer);
+            atmContext.SaveChanges();
         }
     }
 }

@@ -1,18 +1,26 @@
 ﻿using Atm.Dto;
 using Atm.Interfaces;
+using Atm.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Atm.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CustomerController(ICustomerService _customerService) : ControllerBase
     {
-        private readonly ICustomerService _customerService;
-
-        public CustomerController(ICustomerService customerService)
+        [HttpPost("CreateCustomer")]
+        public ActionResult<Customer> CreateCustomer([FromBody] CustomerDto customerDto, [FromQuery][Required] string userName, [FromQuery][Required] string pass)
         {
-            _customerService = customerService;
+            try
+            {
+                Customer customerToCreate = _customerService.CreateCustomer(customerDto, userName, pass);
+                if (customerToCreate is not null)
+                    return Ok(customerToCreate);
+                else return BadRequest(customerDto);
+            }
+            catch { return BadRequest(new()); }
         }
 
         [HttpPost("login")]
