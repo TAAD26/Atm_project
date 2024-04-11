@@ -28,8 +28,8 @@ namespace Atm.Repository
         {
             if (String.IsNullOrEmpty(accountNo)) throw new ArgumentNullException(nameof(accountNo));
             if (String.IsNullOrEmpty(CustomerKey)) throw new ArgumentNullException(nameof(CustomerKey));
-            return limit > 0 ? _context.Transactions.Where(t => t.AccountNo == accountNo && t.Account.CustomerKey == Guid.Parse(CustomerKey)).ToList()
-                : _context.Transactions.Where(t => t.AccountNo == accountNo && t.Account.CustomerKey == Guid.Parse(CustomerKey)).Take(limit).ToList();
+            return limit > 0 ? _context.Transactions.Where(t => t.AccountNo == accountNo && t.Account.CustomerKey == Guid.Parse(CustomerKey)).Take(limit).ToList()
+                : _context.Transactions.Where(t => t.AccountNo == accountNo && t.Account.CustomerKey == Guid.Parse(CustomerKey)).ToList();
         }
     }
 }

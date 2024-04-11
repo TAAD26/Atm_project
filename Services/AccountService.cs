@@ -5,7 +5,7 @@ namespace Atm.Services
 {
     public class AccountService(IAccountRepository _accountRepository) : IAccountService
     {
-        public List<Account> CreateAccountWithoutSave(Guid customerKey, float startingBalance = 0)
+        public List<Account> CreateAccountWithoutSave(Guid customerKey, float startingBalance = 1000)
         {
             List<Account> accounts =
             [
@@ -20,7 +20,7 @@ namespace Atm.Services
             return accounts;
         }
 
-        private static string GenerateAccountNumer()
+        private string GenerateAccountNumer()
         {
             string accountNumber = "LT";
             Random rand = new();
