@@ -1,4 +1,5 @@
 ﻿using Atm.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Atm.Services
 {
@@ -19,6 +20,11 @@ namespace Atm.Services
         public void ChangeBalance(string accountNo, float change)
         {
             _accountRepository.ChangeBalance(accountNo, change);
+        }
+
+        public bool CanWithdraw(string accountNo, float change)
+        {
+            return _accountRepository.CanWithdraw(accountNo, change);
         }
     }
 }

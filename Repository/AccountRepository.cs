@@ -25,5 +25,12 @@ namespace Atm.Repository
 
             _context.SaveChanges();
         }
+
+        public bool CanWithdraw(string accountNo, float change)
+        {
+            int index = _context.Accounts.ToList().IndexOf(_context.Accounts.FirstOrDefault(o => o.Number.Equals(accountNo))!);
+
+            return _context.Accounts.ToList()[index].Balance >= change;
+        }
     }
 }
